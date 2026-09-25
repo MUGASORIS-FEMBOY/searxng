@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: my-searxng
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /healthz
+    envVars:
+      - key: SEARXNG_BASE_URL
+        value: "https://REPLACE-WITH-YOUR-RENDER-URL.onrender.com/"
+      - key: SEARXNG_SECRET
+        generateValue: true
+      - key: UWSGI_WORKERS
+        value: "2"
+      - key: UWSGI_THREADS
+        value: "2"
